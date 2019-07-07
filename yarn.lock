@@ -171,6 +171,16 @@
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-23.3.14.tgz#37daaf78069e7948520474c87b80092ea912520a"
   integrity sha512-Q5hTcfdudEL2yOmluA1zaSyPbzWPmJ3XfSWeP3RyoYvS9hnje1ZyagrZOuQ6+1nQC1Gw+7gap3pLNL3xL6UBug==
 
+"@types/lodash@^4.14.134":
+  version "4.14.134"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.134.tgz#9032b440122db3a2a56200e91191996161dde5b9"
+  integrity sha512-2/O0khFUCFeDlbi7sZ7ZFRCcT812fAeOLm7Ev4KbwASkZ575TDrDcY7YyaoHdTOzKcNbfiwLYZqPmoC4wadrsw==
+
+"@types/matter-js@^0.10.2":
+  version "0.10.2"
+  resolved "https://registry.yarnpkg.com/@types/matter-js/-/matter-js-0.10.2.tgz#49c20c23316637538c860f6d2e3d4d89b20a6551"
+  integrity sha512-7zg46Fx+nPIZ+WlK0Xud8L2IKk9BsilA7hgw+60o75/hM0fnx5MgufCpNPQB+69N+0WFirX5fhoHdmYdzkwdGw==
+
 "@types/minimatch@*":
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
@@ -185,6 +195,11 @@
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/@types/normalize-package-data/-/normalize-package-data-2.4.0.tgz#e486d0d97396d79beedd0a6e33f4534ff6b4973e"
   integrity sha512-f5j5b/Gf71L+dbqxIpQ4Z2WlmI/mPJ0fOkGGmFgtb6sAu97EPczzbS3/tJKxmcYDj55OX6ssqwDAWOHIYDRDGA==
+
+"@types/p5@^0.7.2":
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/@types/p5/-/p5-0.7.2.tgz#783601010d66a2039a7e40ec5388737611c0c85f"
+  integrity sha512-RZP5vE2HoPYP3TOCNpAK883z/0wNAgZ2svuk8o5eZ3aEREm2qaYYQW/w0373CjcmtEtYdGaeLqOgU7AaozGnNA==
 
 "@types/q@^1.5.1":
   version "1.5.2"
@@ -206,7 +221,7 @@
   resolved "https://registry.yarnpkg.com/@types/webpack-env/-/webpack-env-1.13.9.tgz#a67287861c928ebf4159a908d1fb1a2a34d4097a"
   integrity sha512-p8zp5xqkly3g4cCmo2mKOHI9+Z/kObmDj0BmjbDDJQlgDTiEGTbm17MEwTAusV6XceCy+bNw9q/ZHXHyKo3zkg==
 
-"@typescript-eslint/eslint-plugin@^1.1.0":
+"@typescript-eslint/eslint-plugin@^1.1.0", "@typescript-eslint/eslint-plugin@^1.10.2":
   version "1.10.2"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-1.10.2.tgz#552fc64cfcb19c6162190360217c945e8faa330a"
   integrity sha512-7449RhjE1oLFIy5E/5rT4wG5+KsfPzakJuhvpzXJ3C46lq7xywY0/Rjo9ZBcwrfbk0nRZ5xmUHkk7DZ67tSBKw==
@@ -2818,6 +2833,11 @@ eslint-config-airbnb-base@^13.1.0:
     eslint-restricted-globals "^0.1.1"
     object.assign "^4.1.0"
     object.entries "^1.0.4"
+
+eslint-import-resolver-alias@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/eslint-import-resolver-alias/-/eslint-import-resolver-alias-1.1.2.tgz#297062890e31e4d6651eb5eba9534e1f6e68fc97"
+  integrity sha512-WdviM1Eu834zsfjHtcGHtGfcu+F30Od3V7I9Fi57uhBEwPkjDcii7/yW8jAT+gOhn4P/vOxxNAXbFAKsrrc15w==
 
 eslint-import-resolver-node@^0.3.2:
   version "0.3.2"
@@ -5557,6 +5577,11 @@ math-random@^1.0.1:
   resolved "https://registry.yarnpkg.com/math-random/-/math-random-1.0.4.tgz#5dd6943c938548267016d4e34f057583080c514c"
   integrity sha512-rUxjysqif/BZQH2yhd5Aaq7vXMSx9NdEsQcyA07uEzIvxgI7zIr33gGsh+RU0/XjmQpCW7RsVof1vlkvQVCK5A==
 
+matter-js@^0.14.2:
+  version "0.14.2"
+  resolved "https://registry.yarnpkg.com/matter-js/-/matter-js-0.14.2.tgz#8169af9e06fdc356ba9e72b49624eb329839883b"
+  integrity sha512-3ttVT8cJlQnGRjBa8MyVrGyvGmnmOkZ3YsyemIw+KwEEdVi70mo32FH1Eta2b3GfdDJFbMDRqyMQt4heNKBUEA==
+
 md5.js@^1.3.4:
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/md5.js/-/md5.js-1.3.5.tgz#b5d07b8e3216e3e27cd728d72f70d1e6a342005f"
@@ -6420,6 +6445,11 @@ p-try@^2.0.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/p-try/-/p-try-2.2.0.tgz#cb2868540e313d61de58fafbe35ce9004d5540e6"
   integrity sha512-R4nPAVTAU0B9D35/Gk3uJf/7XYbQcyohSKdvAxIRSNghFl4e71hVoGnBNQz9cWaXxO2I10KTC+3jMdvvoKw6dQ==
+
+p5@^0.7.2:
+  version "0.7.3"
+  resolved "https://registry.yarnpkg.com/p5/-/p5-0.7.3.tgz#a0660327feb8da3e43359a16ad62566b96a7cabe"
+  integrity sha512-Ap0Op/YlbqlBe9BEkpislygOKcID9+i6lbGHcUY/QkgZl21+Jy0GPpw+bLjgURk/wlloLcXGnUDpuGsP0xsx2Q==
 
 pako@~1.0.5:
   version "1.0.10"
@@ -8940,6 +8970,18 @@ vue-loader@^15.7.0:
     loader-utils "^1.1.0"
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
+
+vue-p5-component@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/vue-p5-component/-/vue-p5-component-1.0.4.tgz#a5cd564eb69092b00be2cd0b48870d2b5b8f0e9c"
+  integrity sha512-NTT56M66YubbY+qd6enmTggFWOB1poCpEthVvdX3a+KT8disNA4mRXXj3pKlseEPNtD4mfb53D3exKng2O6Kqw==
+  dependencies:
+    p5 "^0.7.2"
+
+vue-router@^3.0.6:
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-3.0.6.tgz#2e4f0f9cbb0b96d0205ab2690cfe588935136ac3"
+  integrity sha512-Ox0ciFLswtSGRTHYhGvx2L44sVbTPNS+uD2kRISuo8B39Y79rOo0Kw0hzupTmiVtftQYCZl87mwldhh2L9Aquw==
 
 vue-style-loader@^4.1.0:
   version "4.1.2"
