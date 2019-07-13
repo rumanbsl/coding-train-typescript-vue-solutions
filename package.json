@@ -22,7 +22,7 @@
     "@types/lodash": "^4.14.134",
     "@types/matter-js": "^0.10.2",
     "@types/p5": "^0.7.2",
-    "@typescript-eslint/eslint-plugin": "^1.10.2",
+    "@typescript-eslint/eslint-plugin": "^1.12.0",
     "@vue/cli-plugin-eslint": "^3.8.0",
     "@vue/cli-plugin-typescript": "^3.8.0",
     "@vue/cli-plugin-unit-jest": "^3.8.0",
