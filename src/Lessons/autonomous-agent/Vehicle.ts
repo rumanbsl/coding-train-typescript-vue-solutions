@@ -1,4 +1,5 @@
 import { P5Sketch, P5Vector } from "vue-p5-component";
+import FlowField from "./Field";
 
 /**
  *
@@ -19,7 +20,7 @@ export default class Vehicle{
 
   public maxSpeed = 15;
 
-  public maxForce = 5;
+  public maxForce = 4;
 
   /**
    *
@@ -27,7 +28,7 @@ export default class Vehicle{
    */
   public constructor(ctx: P5Sketch) {
     this.ctx = ctx;
-    this.position = ctx.createVector(0, 0);
+    this.position = ctx.createVector(ctx.random(0, ctx.width), ctx.random(0, ctx.height));
     this.velocity = ctx.createVector(0, 0);
     this.acceleration = ctx.createVector(0, 0);
   }
@@ -37,8 +38,13 @@ export default class Vehicle{
    *
    * @memberof Vehicle
    */
-  public update() {
-    const force = this.steeringForce("arrive");
+  public update(flowField?: FlowField) {
+    let force = this.ctx.createVector(0, 0);
+    if (flowField) {
+      force = this.follow(flowField);
+    } else {
+      force = this.steeringForce("arrive");
+    }
     const acceleration = this.applyForce(force);
     this.acceleration.add(acceleration);
     this.velocity.add(this.acceleration);
@@ -85,6 +91,24 @@ export default class Vehicle{
   /**
    *
    *
+   * @private
+   * @param {FlowField} flow
+   * @memberof Vehicle
+   */
+  private follow(flow: FlowField): P5Vector {
+    // What is the vector at that spot in the flow field?
+    const desired = flow.lookup(this.position);
+    // Scale it up by maxspeed
+    desired.mult(this.maxSpeed);
+    // Steering is desired minus velocity
+    const steer = desired.sub(this.velocity);
+    steer.limit(this.maxForce); // Limit to maximum steering force
+    return steer;
+  }
+
+  /**
+   *
+   *
    * @memberof Mover
    */
   public display() {
@@ -113,23 +137,44 @@ export default class Vehicle{
    *
    * @memberof Mover
    */
-  public canvasEdgeTouchByMoverHandle() {
+  public vehicleRemainsWithinCanvas() {
     const { position, velocity, ctx } = this;
     if (position.x > ctx.width) {
       position.x = ctx.width - 10;
-      velocity.x *= -1; // e.g.: velocity 20, then new velocity 20 * -1
+      velocity.x = 0; // e.g.: velocity 20, then new velocity 20 * -1
     }
     if (position.x < 0) {
       position.x = 10;
-      velocity.x *= -1; // e.g.: velocity -20, then new velocity -20 * -1
+      velocity.x = 0; // e.g.: velocity -20, then new velocity -20 * -1
     }
     if (position.y > ctx.height) {
       position.y = ctx.height - 10;
-      velocity.y *= -1;
+      velocity.y = 0;
     }
     if (position.y < 0) {
       position.y = 10;
-      velocity.y *= -1;
+      velocity.y = 0;
+    }
+  }
+
+  /**
+   *
+   *
+   * @memberof Mover
+   */
+  public vehiclecomesFromOppositeSideOfCanvas() {
+    const { position, ctx } = this;
+    if (position.x > ctx.width) {
+      position.x = 0;
+    }
+    if (position.x < 0) {
+      position.x = ctx.width;
+    }
+    if (position.y > ctx.height) {
+      position.y = 0;
+    }
+    if (position.y < 0) {
+      position.y = ctx.height;
     }
   }
 
@@ -139,9 +184,13 @@ export default class Vehicle{
    * @param {ForceType} forceType
    * @memberof Mover
    */
-  public init() {
-    this.update();
+  public init(flowField?: FlowField) {
+    this.update(flowField);
     this.display();
-    this.canvasEdgeTouchByMoverHandle();
+    if (flowField) {
+      this.vehiclecomesFromOppositeSideOfCanvas();
+    } else {
+      this.vehicleRemainsWithinCanvas();
+    }
   }
 }

@@ -44,13 +44,15 @@ export default class Attractor{
    *
    * @param {Mover} mover
    * @memberof Attractor
+   * @returns {P5Vector} Mover acceleration
    */
   public attract(mover: Mover): Mover["acceleration"] {
     const direction = cloneDeep(this.position).sub(mover.position);
     let directionMagSquared = direction.magSq();
     directionMagSquared = this.ctx.constrain(directionMagSquared, 25, 125);
     const G = 1;
-    const magnitutde = (G * this.mass * mover.mass) / directionMagSquared;
+    const moverMass = mover.r * 2;
+    const magnitutde = (G * this.mass * moverMass) / directionMagSquared;
     direction.normalize();
     direction.mult(magnitutde);
     return direction;
