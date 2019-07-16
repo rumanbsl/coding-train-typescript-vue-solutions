@@ -40,21 +40,23 @@ export default Vue.extend({
       b.normalize();
       b.mult(a.dot(b));
       const normalPoint = cloneDeep(this.start).add(b);
-      ctx.stroke(0);
-      ctx.strokeWeight(2);
+      ctx.push();
       ctx.fill(50);
       ctx.ellipse(mouse.x, mouse.y, 10, 10);
       ctx.ellipse(this.start.x, this.start.y, 10, 10);
       ctx.ellipse(this.end.x, this.end.y, 10, 10);
-      ctx.fill(255, 0, 0);
-      ctx.ellipse(normalPoint.x, normalPoint.y, 10, 10);
-
+      ctx.stroke(0);
       ctx.line(this.start.x, this.start.y, normalPoint.x, normalPoint.y);
       ctx.line(this.start.x, this.start.y, mouse.x, mouse.y);
       ctx.line(normalPoint.x, normalPoint.y, this.end.x, this.end.y);
+      ctx.pop();
+
+      ctx.push();
+      ctx.fill(255, 0, 0);
+      ctx.ellipse(normalPoint.x, normalPoint.y, 10, 10);
       ctx.stroke(255, 0, 0);
-      ctx.strokeWeight(4);
       ctx.line(mouse.x, mouse.y, normalPoint.x, normalPoint.y);
+      ctx.pop();
     },
   },
 });
