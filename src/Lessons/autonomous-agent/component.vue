@@ -1,34 +1,44 @@
 <template>
-  <P5 v-on="{setup,draw}" />
+  <div>
+    <input
+      ref="slider"
+      type="range"
+      min="1"
+      max="3"
+      name="display"
+      value="3"
+      v-on="{change}"
+    >
+    <label for="display">{{ display }}</label>
+    <FlowField v-if="display === 'flowField'" />
+    <DotProduct v-else-if="display === 'dotProduct'" />
+    <ScalarProjection v-else-if="display === 'scalarProjection'" />
+  </div>
 </template>
 
 <script lang="ts">
-import P5, { P5Sketch } from "vue-p5-component";
 import Vue from "vue";
-import Vehicle from "./Vehicle";
-import FlowField from "./Field";
-
+import FlowField from "./flowField.vue";
+import DotProduct from "./dotProduct.vue";
+import ScalarProjection from "./scalarProjection.vue";
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface Idata {
-  vehicles: Vehicle[];
-  flowField: FlowField;
+  display: "flowField" | "dotProduct" | "scalarProjection";
 }
 
 export default Vue.extend({
-  components: { P5 },
-  data: () => ({ vehicles: [], flowField: undefined } as unknown as Idata),
+  components: { FlowField, DotProduct, ScalarProjection },
+  data: () => ({ display: "scalarProjection" } as Idata),
   methods: {
-    setup(ctx: P5Sketch) {
-      ctx.createCanvas(window.innerWidth, window.innerHeight);
-      for (let index = 0; index < 50; index += 1) {
-        this.vehicles.push(new Vehicle(ctx));
+    change(e: Event) {
+      const select = parseInt((e.target as any).value, 10);
+      if (select === 1) {
+        this.display = "flowField";
+      } else if (select === 2) {
+        this.display = "dotProduct";
+      } else {
+        this.display = "scalarProjection";
       }
-      this.flowField = new FlowField(ctx);
-    },
-    draw(ctx: P5Sketch) {
-      ctx.clear();
-      this.vehicles.forEach((vehicle) => {
-        vehicle.init(this.flowField);
-      });
     },
   },
 });

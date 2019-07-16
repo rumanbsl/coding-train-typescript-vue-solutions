@@ -96,13 +96,10 @@ export default class Vehicle{
    * @memberof Vehicle
    */
   private follow(flow: FlowField): P5Vector {
-    // What is the vector at that spot in the flow field?
     const desired = flow.lookup(this.position);
-    // Scale it up by maxspeed
     desired.mult(this.maxSpeed);
-    // Steering is desired minus velocity
     const steer = desired.sub(this.velocity);
-    steer.limit(this.maxForce); // Limit to maximum steering force
+    steer.limit(this.maxForce);
     return steer;
   }
 
